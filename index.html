@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamPrep Pro - Competitive Exam Preparation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>ExamPrep Pro</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#subjects">Subjects</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#progress">My Progress</a></li>
+                <li><a href="#profile">Profile</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="notification-badge">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="user-profile">
+                    <img src="https://via.placeholder.com/40" alt="User">
+                    <span>John Doe</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1>Welcome back, John! 👋</h1>
+            <p>Continue your preparation for competitive exams</p>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="quick-stats">
+            <div class="stat-card">
+                <i class="fas fa-book-open"></i>
+                <div class="stat-info">
+                    <h3>24</h3>
+                    <p>Topics Covered</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div class="stat-info">
+                    <h3>48h</h3>
+                    <p>Study Time</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-tasks"></i>
+                <div class="stat-info">
+                    <h3>156</h3>
+                    <p>Practice Tests</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <div class="stat-info">
+                    <h3>78%</h3>
+                    <p>Avg. Score</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subject Dashboard -->
+        <section class="subject-dashboard" id="subjects">
+            <h2>Subject Dashboard</h2>
+            <p class="section-subtitle">Select a subject to start learning</p>
+            
+            <div class="subject-grid" id="subjectGrid">
+                <!-- Mathematics Card -->
+                <div class="subject-card" onclick="showSubjectDetails('mathematics')">
+                    <div class="card-header math">
+                        <i class="fas fa-calculator"></i>
+                        <h3>Mathematics</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress math" style="width: 65%"></div>
+                        </div>
+                        <div class="subject-stats">
+                            <span><i class="fas fa-video"></i> 24 Videos</span>
+                            <span><i class="fas fa-file-pdf"></i> 18 Notes</span>
+                            <span><i class="fas fa-question-circle"></i> 450 Ques</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physics Card -->
+                <div class="subject-card" onclick="showSubjectDetails('physics')">
+                    <div class="card-header physics">
+                        <i class="fas fa-flask"></i>
+                        <h3>Physics</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>42%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress physics" style="width: 42%"></div>
+                        </div>
+                        <div class="subject-stats">
+                            <span><i class="fas fa-video"></i> 32 Videos</span>
+                            <span><i class="fas fa-file-pdf"></i> 21 Notes</span>
+                            <span><i class="fas fa-question-circle"></i> 380 Ques</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chemistry Card -->
+                <div class="subject-card" onclick="showSubjectDetails('chemistry')">
+                    <div class="card-header chemistry">
+                        <i class="fas fa-dna"></i>
+                        <h3>Chemistry</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>38%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress chemistry" style="width: 38%"></div>
+                        </div>
+                        <div class="subject-stats">
+                            <span><i class="fas fa-video"></i> 28 Videos</span>
+                            <span><i class="fas fa-file-pdf"></i> 15 Notes</span>
+                            <span><i class="fas fa-question-circle"></i> 320 Ques</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biology Card -->
+                <div class="subject-card" onclick="showSubjectDetails('biology')">
+                    <div class="card-header biology">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Biology</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>71%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress biology" style="width: 71%"></div>
+                        </div>
+                        <div class="subject-stats">
+                            <span><i class="fas fa-video"></i> 45 Videos</span>
+                            <span><i class="fas fa-file-pdf"></i> 32 Notes</span>
+                            <span><i class="fas fa-question-circle"></i> 520 Ques</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Card -->
+                <div class="subject-card" onclick="showSubjectDetails('english')">
+                    <div class="card-header english">
+                        <i class="fas fa-language"></i>
+                        <h3>English</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>52%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress english" style="width: 52%"></div>
+                        </div>
+                        <div class="subject-stats">
+                            <span><i class="fas fa-video"></i> 18 Videos</span>
+                            <span><i class="fas fa-file-pdf"></i> 12 Notes</span>
+                            <span><i class="fas fa-question-circle"></i> 280 Ques</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General Knowledge Card -->
+                <div class="subject-card" onclick="showSubjectDetails('gk')">
+                    <div class="card-header gk">
+                        <i class="fas fa-globe"></i>
+                        <h3>General Knowledge</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>44%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress gk" style="width: 44%"></div>
+                        </div>
+                        <div class="subject-stats">
+                            <span><i class="fas fa-video"></i> 36 Videos</span>
+                            <span><i class="fas fa-file-pdf"></i> 24 Notes</span>
+                            <span><i class="fas fa-question-circle"></i> 620 Ques</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subject Details Modal -->
+        <div id="subjectModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalSubjectTitle">Subject Title</h2>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Content will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Section -->
+        <section class="recommended-section">
+            <h2>Recommended for You</h2>
+            <div class="recommended-grid">
+                <div class="recommended-card">
+                    <img src="https://via.placeholder.com/300x150" alt="Course">
+                    <div class="card-content">
+                        <h3>Advanced Mathematics</h3>
+                        <p>Calculus, Algebra & Trigonometry</p>
+                        <div class="meta-info">
+                            <span><i class="fas fa-users"></i> 2.3k students</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommended-card">
+                    <img src="https://via.placeholder.com/300x150" alt="Course">
+                    <div class="card-content">
+                        <h3>Physics for NEET</h3>
+                        <p>Complete mechanics & thermodynamics</p>
+                        <div class="meta-info">
+                            <span><i class="fas fa-users"></i> 1.8k students</span>
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommended-card">
+                    <img src="https://via.placeholder.com/300x150" alt="Course">
+                    <div class="card-content">
+                        <h3>Organic Chemistry</h3>
+                        <p>Essential reactions & mechanisms</p>
+                        <div class="meta-info">
+                            <span><i class="fas fa-users"></i> 3.1k students</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
