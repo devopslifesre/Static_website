@@ -3,273 +3,922 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExamPrep Pro - Competitive Exam Preparation</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>ExamPro - India's #1 Exam Preparation Platform</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #ffffff;
+            color: #0f172a;
+            line-height: 1.5;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .logo i {
+            color: #4361ee;
+            font-size: 2rem;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #4361ee, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-links a:hover {
+            color: #4361ee;
+        }
+
+        .nav-links a i {
+            font-size: 0.8rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            width: 300px;
+        }
+
+        .search-box i {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: #94a3b8;
+        }
+
+        .get-started-btn {
+            background: linear-gradient(135deg, #4361ee, #06b6d4);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .get-started-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(67, 97, 238, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 3rem 0;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .live {
+            background: #ef4444;
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-text {
+            color: #475569;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4361ee, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .steps {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .step:last-child {
+            color: #4361ee;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero-subtitle span {
+            color: #4361ee;
+            background: #eef2ff;
+            padding: 0.25rem 1rem;
+            border-radius: 100px;
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .free-btn {
+            background: linear-gradient(135deg, #4361ee, #06b6d4);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 20px 30px -10px rgba(67, 97, 238, 0.3);
+            font-family: inherit;
+        }
+
+        .free-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 25px 35px -10px rgba(67, 97, 238, 0.4);
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .app-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+
+        .app-btn:hover {
+            border-color: #4361ee;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+        }
+
+        .app-btn i {
+            font-size: 1.5rem;
+            color: #0f172a;
+        }
+
+        .app-btn span {
+            font-weight: 700;
+            color: #0f172a;
+            font-size: 1rem;
+        }
+
+        .trial-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4361ee;
+            font-weight: 700;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .trial-link:hover {
+            gap: 1rem;
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #4361ee, #06b6d4);
+            border-radius: 30px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.3);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4361ee, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #475569;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Subjects Section */
+        .subjects {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: #475569;
+            font-size: 1.1rem;
+        }
+
+        .subjects-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid #eef2f6;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-color: #4361ee;
+        }
+
+        .subject-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .subject-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .subject-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subject-stats {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-section {
+            margin: 1rem 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+
+        .continue-btn {
+            background: transparent;
+            border: none;
+            color: #4361ee;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+            font-family: inherit;
+            transition: gap 0.3s;
+        }
+
+        .continue-btn:hover {
+            gap: 1rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #94a3b8;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #4361ee;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .steps {
+                justify-content: center;
+            }
+            
+            .cta-section {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .search-box {
+                display: none;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Subject Icon Colors */
+        .math-bg { background: linear-gradient(135deg, #4361ee, #06b6d4); }
+        .physics-bg { background: linear-gradient(135deg, #f97316, #f59e0b); }
+        .chemistry-bg { background: linear-gradient(135deg, #10b981, #14b8a6); }
+        .biology-bg { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
+        .english-bg { background: linear-gradient(135deg, #ef4444, #f87171); }
+        .gk-bg { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .reasoning-bg { background: linear-gradient(135deg, #ec4899, #d946ef); }
+        .current-bg { background: linear-gradient(135deg, #14b8a6, #06b6d4); }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <span>ExamPrep Pro</span>
+            <div class="nav-left">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>ExamPro</span>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#">SuperCoaching</a>
+                    <a href="#">Test Series</a>
+                    <a href="#">Books</a>
+                    <a href="#">Pass <i class="fas fa-chevron-down"></i></a>
+                    <a href="#">More <i class="fas fa-chevron-down"></i></a>
+                </div>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#subjects">Subjects</a></li>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#progress">My Progress</a></li>
-                <li><a href="#profile">Profile</a></li>
-            </ul>
+            
             <div class="nav-right">
-                <div class="notification-badge">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge">3</span>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for exams, courses, tests...">
                 </div>
-                <div class="user-profile">
-                    <img src="https://via.placeholder.com/40" alt="User">
-                    <span>John Doe</span>
-                </div>
+                <button class="get-started-btn">Get Started</button>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Welcome Section -->
-        <section class="welcome-section">
-            <h1>Welcome back, John! 👋</h1>
-            <p>Continue your preparation for competitive exams</p>
-        </section>
-
-        <!-- Quick Stats -->
-        <section class="quick-stats">
-            <div class="stat-card">
-                <i class="fas fa-book-open"></i>
-                <div class="stat-info">
-                    <h3>24</h3>
-                    <p>Topics Covered</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="live-badge">
+                    <span class="live">LIVE</span>
+                    <span class="badge-text">Access Live Classes, Mocks, PYP & Notes for 375+ Exams!</span>
                 </div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-clock"></i>
-                <div class="stat-info">
-                    <h3>48h</h3>
-                    <p>Study Time</p>
+                
+                <h1>One Destination for <span class="gradient-text">Complete Exam Preparation</span></h1>
+                
+                <div class="steps">
+                    <span class="step">Learn ▶</span>
+                    <span class="step">Practice ▶</span>
+                    <span class="step">Improve ▶</span>
+                    <span class="step">Succeed</span>
                 </div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-tasks"></i>
-                <div class="stat-info">
-                    <h3>156</h3>
-                    <p>Practice Tests</p>
+                
+                <p class="hero-subtitle">
+                    Start your preparation for selections. <span>For Free!</span>
+                </p>
+                
+                <div class="cta-section">
+                    <button class="free-btn">Get Started For Free</button>
+                    
+                    <div class="app-buttons">
+                        <div class="app-btn">
+                            <i class="fab fa-google-play"></i>
+                            <div>
+                                GET IT ON<br>
+                                <span>Google Play</span>
+                            </div>
+                        </div>
+                        
+                        <div class="app-btn">
+                            <i class="fab fa-apple"></i>
+                            <div>
+                                Download on the<br>
+                                <span>App Store</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
+                <a href="#" class="trial-link">
+                    Start Trial <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-chart-line"></i>
-                <div class="stat-info">
-                    <h3>78%</h3>
-                    <p>Avg. Score</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Subject Dashboard -->
-        <section class="subject-dashboard" id="subjects">
-            <h2>Subject Dashboard</h2>
-            <p class="section-subtitle">Select a subject to start learning</p>
             
-            <div class="subject-grid" id="subjectGrid">
-                <!-- Mathematics Card -->
-                <div class="subject-card" onclick="showSubjectDetails('mathematics')">
-                    <div class="card-header math">
-                        <i class="fas fa-calculator"></i>
-                        <h3>Mathematics</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="progress-info">
-                            <span>Progress</span>
-                            <span>65%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress math" style="width: 65%"></div>
-                        </div>
-                        <div class="subject-stats">
-                            <span><i class="fas fa-video"></i> 24 Videos</span>
-                            <span><i class="fas fa-file-pdf"></i> 18 Notes</span>
-                            <span><i class="fas fa-question-circle"></i> 450 Ques</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Physics Card -->
-                <div class="subject-card" onclick="showSubjectDetails('physics')">
-                    <div class="card-header physics">
-                        <i class="fas fa-flask"></i>
-                        <h3>Physics</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="progress-info">
-                            <span>Progress</span>
-                            <span>42%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress physics" style="width: 42%"></div>
-                        </div>
-                        <div class="subject-stats">
-                            <span><i class="fas fa-video"></i> 32 Videos</span>
-                            <span><i class="fas fa-file-pdf"></i> 21 Notes</span>
-                            <span><i class="fas fa-question-circle"></i> 380 Ques</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chemistry Card -->
-                <div class="subject-card" onclick="showSubjectDetails('chemistry')">
-                    <div class="card-header chemistry">
-                        <i class="fas fa-dna"></i>
-                        <h3>Chemistry</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="progress-info">
-                            <span>Progress</span>
-                            <span>38%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress chemistry" style="width: 38%"></div>
-                        </div>
-                        <div class="subject-stats">
-                            <span><i class="fas fa-video"></i> 28 Videos</span>
-                            <span><i class="fas fa-file-pdf"></i> 15 Notes</span>
-                            <span><i class="fas fa-question-circle"></i> 320 Ques</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Biology Card -->
-                <div class="subject-card" onclick="showSubjectDetails('biology')">
-                    <div class="card-header biology">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Biology</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="progress-info">
-                            <span>Progress</span>
-                            <span>71%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress biology" style="width: 71%"></div>
-                        </div>
-                        <div class="subject-stats">
-                            <span><i class="fas fa-video"></i> 45 Videos</span>
-                            <span><i class="fas fa-file-pdf"></i> 32 Notes</span>
-                            <span><i class="fas fa-question-circle"></i> 520 Ques</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- English Card -->
-                <div class="subject-card" onclick="showSubjectDetails('english')">
-                    <div class="card-header english">
-                        <i class="fas fa-language"></i>
-                        <h3>English</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="progress-info">
-                            <span>Progress</span>
-                            <span>52%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress english" style="width: 52%"></div>
-                        </div>
-                        <div class="subject-stats">
-                            <span><i class="fas fa-video"></i> 18 Videos</span>
-                            <span><i class="fas fa-file-pdf"></i> 12 Notes</span>
-                            <span><i class="fas fa-question-circle"></i> 280 Ques</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- General Knowledge Card -->
-                <div class="subject-card" onclick="showSubjectDetails('gk')">
-                    <div class="card-header gk">
-                        <i class="fas fa-globe"></i>
-                        <h3>General Knowledge</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="progress-info">
-                            <span>Progress</span>
-                            <span>44%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress gk" style="width: 44%"></div>
-                        </div>
-                        <div class="subject-stats">
-                            <span><i class="fas fa-video"></i> 36 Videos</span>
-                            <span><i class="fas fa-file-pdf"></i> 24 Notes</span>
-                            <span><i class="fas fa-question-circle"></i> 620 Ques</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Subject Details Modal -->
-        <div id="subjectModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 id="modalSubjectTitle">Subject Title</h2>
-                    <span class="close" onclick="closeModal()">&times;</span>
-                </div>
-                <div class="modal-body" id="modalBody">
-                    <!-- Content will be dynamically loaded -->
-                </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Exam Preparation">
             </div>
         </div>
+    </section>
 
-        <!-- Recommended Section -->
-        <section class="recommended-section">
-            <h2>Recommended for You</h2>
-            <div class="recommended-grid">
-                <div class="recommended-card">
-                    <img src="https://via.placeholder.com/300x150" alt="Course">
-                    <div class="card-content">
-                        <h3>Advanced Mathematics</h3>
-                        <p>Calculus, Algebra & Trigonometry</p>
-                        <div class="meta-info">
-                            <span><i class="fas fa-users"></i> 2.3k students</span>
-                            <span><i class="fas fa-star"></i> 4.8</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="recommended-card">
-                    <img src="https://via.placeholder.com/300x150" alt="Course">
-                    <div class="card-content">
-                        <h3>Physics for NEET</h3>
-                        <p>Complete mechanics & thermodynamics</p>
-                        <div class="meta-info">
-                            <span><i class="fas fa-users"></i> 1.8k students</span>
-                            <span><i class="fas fa-star"></i> 4.7</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="recommended-card">
-                    <img src="https://via.placeholder.com/300x150" alt="Course">
-                    <div class="card-content">
-                        <h3>Organic Chemistry</h3>
-                        <p>Essential reactions & mechanisms</p>
-                        <div class="meta-info">
-                            <span><i class="fas fa-users"></i> 3.1k students</span>
-                            <span><i class="fas fa-star"></i> 4.9</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">375+</div>
+                <div class="stat-label">Exams Covered</div>
             </div>
-        </section>
+            <div class="stat-item">
+                <div class="stat-number">50L+</div>
+                <div class="stat-label">Happy Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Expert Faculty</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Live Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="subjects">
+        <div class="section-header">
+            <h2>Explore <span class="gradient-text">Popular Subjects</span></h2>
+            <p>Choose from 375+ exams and start your preparation today</p>
+        </div>
+
+        <div class="subjects-grid" id="subjectsGrid"></div>
+    </section>
+
+    <!-- Subject Modal -->
+    <div id="subjectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Subject data
+        const subjects = [
+            {
+                id: 'mathematics',
+                name: 'Mathematics',
+                icon: 'fa-calculator',
+                color: 'math-bg',
+                videos: 24,
+                notes: 18,
+                questions: 450,
+                progress: 65,
+                chapters: [
+                    { name: 'Algebra', topics: ['Linear Equations', 'Quadratic Equations', 'Polynomials'], resources: 12, progress: 70 },
+                    { name: 'Calculus', topics: ['Limits', 'Derivatives', 'Integration'], resources: 15, progress: 45 },
+                    { name: 'Trigonometry', topics: ['Ratios', 'Identities', 'Equations'], resources: 8, progress: 80 }
+                ]
+            },
+            {
+                id: 'physics',
+                name: 'Physics',
+                icon: 'fa-flask',
+                color: 'physics-bg',
+                videos: 32,
+                notes: 21,
+                questions: 380,
+                progress: 42,
+                chapters: [
+                    { name: 'Mechanics', topics: ['Motion', 'Forces', 'Energy'], resources: 14, progress: 55 },
+                    { name: 'Thermodynamics', topics: ['Heat', 'Laws', 'Kinetic Theory'], resources: 8, progress: 30 },
+                    { name: 'Optics', topics: ['Reflection', 'Refraction', 'Lenses'], resources: 10, progress: 40 }
+                ]
+            },
+            {
+                id: 'chemistry',
+                name: 'Chemistry',
+                icon: 'fa-dna',
+                color: 'chemistry-bg',
+                videos: 28,
+                notes: 15,
+                questions: 320,
+                progress: 38,
+                chapters: [
+                    { name: 'Physical Chemistry', topics: ['Mole Concept', 'Atomic Structure', 'Bonding'], resources: 15, progress: 50 },
+                    { name: 'Organic Chemistry', topics: ['Hydrocarbons', 'Alcohols', 'Compounds'], resources: 18, progress: 35 }
+                ]
+            },
+            {
+                id: 'biology',
+                name: 'Biology',
+                icon: 'fa-leaf',
+                color: 'biology-bg',
+                videos: 45,
+                notes: 32,
+                questions: 520,
+                progress: 71,
+                chapters: [
+                    { name: 'Botany', topics: ['Plant Kingdom', 'Morphology', 'Physiology'], resources: 20, progress: 75 },
+                    { name: 'Zoology', topics: ['Animal Kingdom', 'Human Physiology', 'Reproduction'], resources: 22, progress: 80 }
+                ]
+            },
+            {
+                id: 'english',
+                name: 'English',
+                icon: 'fa-language',
+                color: 'english-bg',
+                videos: 18,
+                notes: 12,
+                questions: 280,
+                progress: 52,
+                chapters: [
+                    { name: 'Grammar', topics: ['Tenses', 'Parts of Speech', 'Sentence Structure'], resources: 10, progress: 60 },
+                    { name: 'Vocabulary', topics: ['Synonyms', 'Antonyms', 'Idioms'], resources: 12, progress: 55 }
+                ]
+            },
+            {
+                id: 'gk',
+                name: 'General Knowledge',
+                icon: 'fa-globe',
+                color: 'gk-bg',
+                videos: 36,
+                notes: 24,
+                questions: 620,
+                progress: 44,
+                chapters: [
+                    { name: 'History', topics: ['Ancient India', 'Medieval India', 'Modern India'], resources: 18, progress: 50 },
+                    { name: 'Geography', topics: ['Physical', 'Indian', 'World'], resources: 15, progress: 45 }
+                ]
+            }
+        ];
+
+        // Load subjects
+        function loadSubjects() {
+            const grid = document.getElementById('subjectsGrid');
+            if (!grid) return;
+
+            grid.innerHTML = subjects.map(subject => `
+                <div class="subject-card" onclick="showSubjectDetails('${subject.id}')">
+                    <div class="subject-icon ${subject.color}">
+                        <i class="fas ${subject.icon}"></i>
+                    </div>
+                    <h3>${subject.name}</h3>
+                    <div class="subject-stats">
+                        ${subject.videos} Videos • ${subject.notes} Notes • ${subject.questions} Ques
+                    </div>
+                    <div class="progress-section">
+                        <div class="progress-header">
+                            <span>Progress</span>
+                            <span>${subject.progress}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${subject.progress}%; background: linear-gradient(135deg, #4361ee, #06b6d4)"></div>
+                        </div>
+                    </div>
+                    <button class="continue-btn">
+                        Continue Learning <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Show subject details
+        function showSubjectDetails(subjectId) {
+            const subject = subjects.find(s => s.id === subjectId);
+            if (!subject) return;
+
+            const modal = document.getElementById('subjectModal');
+            const modalBody = document.getElementById('modalBody');
+
+            let chaptersHtml = '';
+            subject.chapters.forEach(chapter => {
+                chaptersHtml += `
+                    <div style="background: #f8fafc; border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h4 style="font-size: 1.1rem; font-weight: 700;">${chapter.name}</h4>
+                            <span style="color: #64748b; font-size: 0.9rem;">${chapter.resources} resources</span>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                            ${chapter.topics.map(topic => `<span style="background: white; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.85rem; color: #4361ee; border: 1px solid #4361ee;">${topic}</span>`).join('')}
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-header">
+                                <span>Progress</span>
+                                <span>${chapter.progress}%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${chapter.progress}%; background: linear-gradient(135deg, #4361ee, #06b6d4)"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            modalBody.innerHTML = `
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; background: linear-gradient(135deg, #4361ee, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${subject.name}</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; background: #f8fafc; border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4361ee;">${subject.videos}</div>
+                        <div style="color: #64748b; font-size: 0.9rem;">Videos</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4361ee;">${subject.notes}</div>
+                        <div style="color: #64748b; font-size: 0.9rem;">Notes</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4361ee;">${subject.questions}</div>
+                        <div style="color: #64748b; font-size: 0.9rem;">Questions</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4361ee;">${subject.progress}%</div>
+                        <div style="color: #64748b; font-size: 0.9rem;">Progress</div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Chapters & Topics</h3>
+                ${chaptersHtml}
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button onclick="startLearning('${subject.id}')" style="flex: 2; background: linear-gradient(135deg, #4361ee, #06b6d4); color: white; border: none; padding: 1rem; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <i class="fas fa-play"></i> Start Learning
+                    </button>
+                    <button onclick="takeTest('${subject.id}')" style="flex: 1; background: #f8fafc; color: #4361ee; border: 1px solid #e2e8f0; padding: 1rem; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer;">
+                        Take Test
+                    </button>
+                </div>
+            `;
+
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('subjectModal').style.display = 'none';
+        }
+
+        function startLearning(subjectId) {
+            alert(`Starting ${subjects.find(s => s.id === subjectId).name} learning session!`);
+            closeModal();
+        }
+
+        function takeTest(subjectId) {
+            alert(`Starting ${subjects.find(s => s.id === subjectId).name} practice test!`);
+            closeModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('subjectModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Load subjects on page load
+        document.addEventListener('DOMContentLoaded', loadSubjects);
+    </script>
 </body>
 </html>
